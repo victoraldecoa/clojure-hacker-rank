@@ -13,4 +13,6 @@
   (testing "all zeroes as input."
     (is (= (hourglassSum [[0 0 0] [0 0 0] [0 0 0]]) 0)))
   (testing "all ones as input."
-    (is (= (hourglassSum [[1 1 1] [1 1 1] [1 1 1]]) 7))))
+    (is (= (hourglassSum [[1 1 1] [1 1 1] [1 1 1]]) 7)))
+  (testing "1s at the top left."
+    (is (= (hourglassSum [[1 1 1 -10] [1 1 1 -10] [1 1 1 -10] [-10 -10 -10 -10]]) 7))))
