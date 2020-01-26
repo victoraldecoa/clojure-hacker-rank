@@ -1,3 +1,4 @@
+; Interview Preparation Kit Arrays tests
 (ns clojure-hacker-rank.ipk-arrays-test
   (:require [clojure.test :refer :all]
             [clojure-hacker-rank.rotate-left :refer [rotLeft]]
