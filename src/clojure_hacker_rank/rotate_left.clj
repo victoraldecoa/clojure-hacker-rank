@@ -1,9 +1,9 @@
 (ns clojure-hacker-rank.rotate-left)
 
-(defn rotLeft [a d]
+(defn rotate-left [a d]
   (concat (subvec a d) (subvec a 0 d)))
 
-(defn rotLeftSlow [a d]
+(defn slow-rotate-left [a d]
   (loop [i d
          b a]
     (println "looping " i " array " b)
