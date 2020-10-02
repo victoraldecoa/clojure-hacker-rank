@@ -9,7 +9,10 @@
 
 (defn down
   [building heights output]
-  [[] []])
+  [(sort-by last (remove #(= % building) heights))
+   (if (< (last building) (last (last heights)))
+     output
+     (conj output [(building 1) (last (second (reverse heights)))]))])
 
 (defn transform-to-events
   [buildings]

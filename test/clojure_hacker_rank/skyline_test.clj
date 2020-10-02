@@ -17,5 +17,9 @@
     (is (= (up [1.5 4 1] [[nil nil 0] [1 2 3]] [[1 3]]) [[[nil nil 0] [1.5 4 1] [1 2 3]] [[1 3]]])))))
 
 (deftest down-test
-  (testing "no buildings"
-    (is (= (down [1 2 3] [] []) [[] []]))))
+  (testing "one building"
+    (is (= (down [1 2 3] [[nil nil 0] [1 2 3]] [[1 3]]) [[[nil nil 0]] [[1 3] [2 0]]])))
+  (testing "finishing shorter building"
+    (is (= (down [1 2 3] [[nil nil 0] [1 2 3] [1 3 5]] [[1 5]]) [[[nil nil 0] [1 3 5]] [[1 5]]])))
+  (testing "finishing taller building"
+    (is (= (down [1 2 3] [[nil nil 0] [1 3 1] [1 2 3]] [[1 3]]) [[[nil nil 0] [1 3 1]] [[1 3] [2 1]]]))))
