@@ -3,7 +3,7 @@
 (defn up
   [building heights output]
   [(sort-by last (conj heights building))
-   (if (or (empty? heights) (< (last (last heights)) (last building)))
+   (if (< (last (last heights)) (last building))
      (conj output [(first building) (last building)])
      output)])
 

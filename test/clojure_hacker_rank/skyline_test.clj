@@ -12,9 +12,9 @@
 
 (deftest up-test
   (testing "taller building on top of other"
-    (is (= (up [1 2 3] [] []) [[[1 2 3]] [[1 3]]]))
+    (is (= (up [1 2 3] [[nil nil 0]] []) [[[nil nil 0] [1 2 3]] [[1 3]]]))
   (testing "shorter building on top of other"
-    (is (= (up [1.5 4 1] [[1 2 3]] [[1 3]]) [[[1.5 4 1] [1 2 3]] [[1 3]]])))))
+    (is (= (up [1.5 4 1] [[nil nil 0] [1 2 3]] [[1 3]]) [[[nil nil 0] [1.5 4 1] [1 2 3]] [[1 3]]])))))
 
 (deftest down-test
   (testing "no buildings"
