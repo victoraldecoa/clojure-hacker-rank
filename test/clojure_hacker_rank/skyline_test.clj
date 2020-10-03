@@ -12,14 +12,14 @@
 
 (deftest up-test
   (testing "taller building on top of other"
-    (is (= (up [1 2 3] [[nil nil 0]] []) [[[nil nil 0] [1 2 3]] [[1 3]]]))
+    (is (= (up [1 2 3] (create-set) []) [(create-set [1 2 3]) [[1 3]]]))
   (testing "shorter building on top of other"
-    (is (= (up [1.5 4 1] [[nil nil 0] [1 2 3]] [[1 3]]) [[[nil nil 0] [1.5 4 1] [1 2 3]] [[1 3]]])))))
+    (is (= (up [1.5 4 1] (create-set [1 2 3]) [[1 3]]) [(create-set [1.5 4 1] [1 2 3]) [[1 3]]])))))
 
 (deftest down-test
   (testing "one building"
-    (is (= (down [1 2 3] [[nil nil 0] [1 2 3]] [[1 3]]) [[[nil nil 0]] [[1 3] [2 0]]])))
+    (is (= (down [1 2 3] (create-set [1 2 3]) [[1 3]]) [(create-set) [[1 3] [2 0]]])))
   (testing "finishing shorter building"
-    (is (= (down [1 2 3] [[nil nil 0] [1 2 3] [1 3 5]] [[1 5]]) [[[nil nil 0] [1 3 5]] [[1 5]]])))
+    (is (= (down [1 2 3] (create-set [1 2 3] [1 3 5]) [[1 5]]) [(create-set [1 3 5]) [[1 5]]])))
   (testing "finishing taller building"
-    (is (= (down [1 2 3] [[nil nil 0] [1 3 1] [1 2 3]] [[1 3]]) [[[nil nil 0] [1 3 1]] [[1 3] [2 1]]]))))
+    (is (= (down [1 2 3] (create-set [1 3 1] [1 2 3]) [[1 3]]) [(create-set [1 3 1]) [[1 3] [2 1]]]))))

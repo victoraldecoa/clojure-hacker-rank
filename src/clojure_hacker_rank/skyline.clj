@@ -2,17 +2,18 @@
 
 (defn up
   [building heights output]
-  [(into []  (sort-by last (conj heights building)))
+  [(conj heights building)
    (if (< (last (last heights)) (last building))
      (conj output [(first building) (last building)])
      output)])
 
 (defn down
   [building heights output]
-  [(into [] (sort-by last (remove #(= % building) heights)))
+  [(disj heights building)
    (if (< (last building) (last (last heights)))
      output
      (conj output [(building 1) (last (second (reverse heights)))]))])
+
 
 (defn transform-to-events
   [buildings]
@@ -20,9 +21,13 @@
                            (map (fn [b] [(b 0) b up  ]) buildings)
                            (map (fn [b] [(b 1) b down]) buildings)))))
 
+(defn create-set
+  [& keys]
+  (apply sorted-set-by (fn [x y] (compare (last x) (last y))) [nil nil 0] keys))
+
 (defn generate-skyline
   [buildings]
-  (loop [heights [[nil nil 0]]
+  (loop [heights (create-set)
          output []
          index 0
          events (transform-to-events buildings)]
