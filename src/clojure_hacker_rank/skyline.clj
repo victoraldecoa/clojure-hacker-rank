@@ -17,9 +17,9 @@
 
 (defn transform-to-events
   [buildings]
-  (into []  (sort-by first (concat
-                            (map (fn [b] [(b 0) b up]) buildings)
-                            (map (fn [b] [(b 1) b down]) buildings)))))
+  (into [] (sort-by first (concat
+                           (map (fn [b] [(b 0) b up]) buildings)
+                           (map (fn [b] [(b 1) b down]) buildings)))))
 
 (defn create-set
   [& keys]
