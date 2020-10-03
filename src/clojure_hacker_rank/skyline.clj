@@ -2,23 +2,23 @@
 
 (defn up
   [building heights output]
-  [(sort-by last (conj heights building))
+  [(into []  (sort-by last (conj heights building)))
    (if (< (last (last heights)) (last building))
      (conj output [(first building) (last building)])
      output)])
 
 (defn down
   [building heights output]
-  [(sort-by last (remove #(= % building) heights))
+  [(into [] (sort-by last (remove #(= % building) heights)))
    (if (< (last building) (last (last heights)))
      output
      (conj output [(building 1) (last (second (reverse heights)))]))])
 
 (defn transform-to-events
   [buildings]
-  (sort-by first (concat
-                  (map (fn [b] [(b 0) b up  ]) buildings)
-                  (map (fn [b] [(b 1) b down]) buildings))))
+  (into []  (sort-by first (concat
+                           (map (fn [b] [(b 0) b up  ]) buildings)
+                           (map (fn [b] [(b 1) b down]) buildings)))))
 
 (defn generate-skyline
   [buildings]
