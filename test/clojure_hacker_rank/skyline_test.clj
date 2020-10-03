@@ -2,9 +2,9 @@
   (:require [clojure.test :refer :all]
             [clojure-hacker-rank.skyline :refer :all]))
 
-;; (deftest generate-skyline-test
-  ;; (testing "short overlap"
-    ;; (is (= (generate-skyline [[3 4 5] [1 7 1]]) [[1 1] [3 5] [4 5] [7 1]]))))
+(deftest generate-skyline-test
+  (testing "short overlap"
+    (is (= (generate-skyline [[3 4 5] [1 7 1]]) [[1 1] [3 5] [4 1] [7 0]]))))
 
 (deftest transform-to-events-test
   (testing "completely overlapped tall building"

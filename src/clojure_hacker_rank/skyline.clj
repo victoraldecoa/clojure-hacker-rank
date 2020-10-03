@@ -22,9 +22,11 @@
 
 (defn generate-skyline
   [buildings]
-  (loop [heights []
+  (loop [heights [[nil nil 0]]
          output []
          index 0
          events (transform-to-events buildings)]
     (if (>= index (count events)) output
-        (recur [] [] (inc index) events))))
+        (let [event (events index)]
+          (let [next ((last event) (second event) heights output)]
+            (recur (first next) (second next) (inc index) events))))))
