@@ -14,4 +14,7 @@
              (hourglass-sum input)))
   (let [input [[3 4 10] [1 8 2]]]
     (println "Skyline for" input "is"
-             (generate-skyline input))))
+             (generate-skyline input)))
+  ; profile huge skyline input
+  (do (generate-skyline
+       (let [n 5000] (map (fn [i] [i (- n i) i]) (range 1 n)))) nil))
