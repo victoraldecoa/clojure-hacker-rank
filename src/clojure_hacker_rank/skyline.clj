@@ -10,18 +10,16 @@
 (defn down
   [building heights output]
   (let [new-heights (disj heights building)]
-       [new-heights
-        (if (< (last building) (last (first heights)))
-          output
-          (conj output [(building 1) (last (first new-heights))]))]))
-
+    [new-heights
+     (if (< (last building) (last (first heights)))
+       output
+       (conj output [(building 1) (last (first new-heights))]))]))
 
 (defn transform-to-events
   [buildings]
   (into []  (sort-by first (concat
-                           (map (fn [b] [(b 0) b up  ]) buildings)
-                           (map (fn [b] [(b 1) b down]) buildings)))))
-
+                            (map (fn [b] [(b 0) b up]) buildings)
+                            (map (fn [b] [(b 1) b down]) buildings)))))
 
 (defn create-set
   [& keys]

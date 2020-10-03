@@ -12,9 +12,9 @@
 
 (deftest up-test
   (testing "taller building on top of other"
-    (is (= (up [1 2 3] (create-set) []) [(create-set [1 2 3]) [[1 3]]]))
+    (is (= (up [1 2 3] (create-set) []) [(create-set [1 2 3]) [[1 3]]])))
   (testing "shorter building on top of other"
-    (is (= (up [1.5 4 1] (create-set [1 2 3]) [[1 3]]) [(create-set [1.5 4 1] [1 2 3]) [[1 3]]])))))
+    (is (= (up [1.5 4 1] (create-set [1 2 3]) [[1 3]]) [(create-set [1.5 4 1] [1 2 3]) [[1 3]]]))))
 
 (deftest down-test
   (testing "one building"
