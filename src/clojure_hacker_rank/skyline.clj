@@ -12,11 +12,12 @@
 
 (defn down
   [building heights output]
-  (let [new-heights (disj heights building)]
+  (let [new-heights (disj heights building)
+        next-height (:height (first new-heights))]
     [new-heights
-     (if (< (:height building) (:height (first heights)))
-       output
-       (conj output [(:xf building) (:height (first new-heights))]))]))
+     (if (< next-height (:height (first heights)))
+       (conj output [(:xf building) next-height])
+       output)]))
 
 (defn transform-to-events
   [building-array]
@@ -25,9 +26,20 @@
                              (map #(->Event (:xi %) % up) buildings)
                              (map #(->Event (:xf %) % down) buildings))))))
 
+(defn height-then-xf-then-xi
+  [b1 b2]
+  (let [c (compare (:height b2) (:height b1))]
+    (if (not= c 0)
+      c
+      (let [c (compare (:xf b2) (:xf b1))]
+        (if (not= c 0)
+          c
+          (let [c (compare (:xi b2) (:xi b1))]
+            c))))))
+
 (defn create-set
   [& keys]
-  (apply sorted-set-by #(compare (:height %2) (:height %1)) (->Building nil nil 0) keys))
+  (apply sorted-set-by height-then-xf-then-xi (->Building nil nil 0) keys))
 
 (defn generate-skyline
   [buildings]
