@@ -4,7 +4,15 @@
             [clojure-hacker-rank.hourglass :refer [hourglass-sum]]
             [clojure-hacker-rank.skyline :refer [generate-skyline]]))
 
-(defn -main []
+(defn n-from-arg
+  [arg-n]
+  (if (nil? arg-n)
+    nil
+    (if (integer? arg-n)
+      arg-n
+      (Integer/parseInt arg-n))))
+
+(defn -main [& args]
   (let [array [1 2 3] rotations 2]
     (println "Rotate Left of array" array "rotations" rotations "is"
              (rotate-left array rotations)))
@@ -16,4 +24,4 @@
              (generate-skyline input)))
   ; profile huge skyline input
   (do (generate-skyline
-       (let [n 5000] (map (fn [i] [i (- n i) i]) (range 1 n)))) nil))
+       (let [n (or (n-from-arg (first args)) 5000)] (map (fn [i] [i (- n i) i]) (range 1 n)))) nil))
