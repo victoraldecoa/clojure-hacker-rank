@@ -11,6 +11,10 @@
     (is (= (generate-skyline [[1 2 1] [1 3 3]]) [[1 3] [3 0]])))
   (testing "starting same x taller first"
     (is (= (generate-skyline [[1 3 3] [1 2 1]]) [[1 3] [3 0]])))
+  (testing "finishing same x taller first"
+    (is (= (generate-skyline [[1 3 3] [2 3 1]]) [[1 3] [3 0]])))
+  (testing "finishing same x shorter first"
+    (is (= (generate-skyline [[2 3 1] [1 3 3]]) [[1 3] [3 0]]))))
 
 (deftest transform-to-events-test
   (testing "completely overlapped tall building"
