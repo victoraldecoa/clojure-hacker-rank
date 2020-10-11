@@ -22,9 +22,11 @@
 (defn transform-to-events
   [building-array]
   (let [buildings (map #(apply ->Building %) building-array)]
-    (into [] (concat
-              (sort-by (juxt :x #(- (:height (:building %)))) (map #(->Event (:xi %) % up) buildings))
-              (sort-by (juxt :x #(:height (:building %))) (map #(->Event (:xf %) % down) buildings))))))
+    (into [] (sort-by
+              (juxt :x #(let [h (:height (:building %))]
+                          (if (= (:action %) up) (- h) h)))
+              (concat (map #(->Event (:xi %) % up) buildings)
+                      (map #(->Event (:xf %) % down) buildings))))))
 
 (defn height-then-xf-then-xi
   [b1 b2]

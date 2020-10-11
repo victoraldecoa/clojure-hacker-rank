@@ -5,6 +5,12 @@
 (deftest generate-skyline-test
   (testing "short overlap"
     (is (= (generate-skyline [[3 4 5] [1 7 1]]) [[1 1] [3 5] [4 1] [7 0]])))
+  (testing "overlap short first"
+    (is (= (generate-skyline [[1 3 1] [2 4 5]]) [[1 1] [2 5] [4 0]])))
+  (testing "overlap tall first"
+    (is (= (generate-skyline [[1 3 5] [2 4 1]]) [[1 5] [3 1] [4 0]])))
+  (testing "no overlap"
+    (is (= (generate-skyline [[1 3 1] [4 6 1]]) [[1 1] [3 0] [4 1] [6 0]])))
   (testing "same height middle"
     (is (= (generate-skyline [[1 3 5] [2 4 5]]) [[1 5] [4 0]])))
   (testing "starting same x shorter first"
