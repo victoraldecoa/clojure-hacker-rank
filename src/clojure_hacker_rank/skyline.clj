@@ -5,19 +5,19 @@
 
 (defn up
   [building heights output]
-  [(conj heights building)
-   (if (< (:height (first heights)) (:height building))
-     (conj output [(:xi building) (:height building)])
-     output)])
+  {:heights (conj heights building)
+   :output (if (< (:height (first heights)) (:height building))
+             (conj output [(:xi building) (:height building)])
+             output)})
 
 (defn down
   [building heights output]
   (let [new-heights (disj heights building)
         next-height (:height (first new-heights))]
-    [new-heights
-     (if (< next-height (:height (first heights)))
-       (conj output [(:xf building) next-height])
-       output)]))
+    {:heights new-heights
+     :output (if (< next-height (:height (first heights)))
+               (conj output [(:xf building) next-height])
+               output)}))
 
 (defn transform-to-events
   [building-array]
@@ -45,11 +45,9 @@
 
 (defn generate-skyline
   [buildings]
-  (loop [heights (create-set)
-         output []
-         index 0
-         events (transform-to-events buildings)]
-    (if (>= index (count events)) output
-        (let [event (events index)]
-          (let [next ((:action event) (:building event) heights output)]
-            (recur (first next) (second next) (inc index) events))))))
+  (:output (reduce (fn [{output :output
+                         heights :heights}
+                        event]
+                     ((:action event) (:building event) heights output))
+                   {:output [] :heights (create-set)}
+                   (transform-to-events buildings))))
