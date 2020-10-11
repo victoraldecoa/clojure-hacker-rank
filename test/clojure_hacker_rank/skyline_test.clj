@@ -21,6 +21,12 @@
     (is (= (generate-skyline [[1 3 3] [2 3 1]]) [[1 3] [3 0]])))
   (testing "finishing same x shorter first"
     (is (= (generate-skyline [[2 3 1] [1 3 3]]) [[1 3] [3 0]])))
+  (testing "finishing taller same x as shorter starts"
+    (is (= (generate-skyline [[1 3 5] [3 5 3]]) [[1 5] [3 3] [5 0]])))
+  (testing "finishing shorter same x as taller starts"
+    (is (= (generate-skyline [[1 3 3] [3 5 5]]) [[1 3] [3 5] [5 0]])))
+  (testing "finishing bulding at the same x as equality tall building starts"
+    (is (= (generate-skyline [[1 3 3] [3 5 3]]) [[1 3] [5 0]])))
   (testing "identical buildings"
     (is (= (generate-skyline [[1 3 3] [1 3 3]]) [[1 3] [3 0]]))))
 
