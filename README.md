@@ -2,6 +2,8 @@
 
 Set of submissions to Hacker Rank problems solved in Clojure.
 
+![Clojure CI](https://github.com/victoraldecoa/clojure-hacker-rank/workflows/Clojure%20CI/badge.svg)
+
 ## Usage
 
 Each file corresponds to one hacker rank problem. You can run each of them using REPL or run the whole project using lein from the repo's root folder.
