@@ -2,7 +2,7 @@
 
 Set of submissions to Hacker Rank problems solved in Clojure.
 
-![Clojure CI](https://github.com/victoraldecoa/clojure-hacker-rank/workflows/Clojure%20CI/badge.svg)
+![Clojure CI](https://github.com/victoraldecoa/clojure-hacker-rank/workflows/Clojure%20CI/badge.svg) [![codecov](https://codecov.io/gh/victoraldecoa/clojure-hacker-rank/branch/main/graph/badge.svg?token=EBHT9S2X6Y)](undefined)
 
 ## Usage
 
