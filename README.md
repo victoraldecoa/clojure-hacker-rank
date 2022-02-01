@@ -12,9 +12,9 @@ Each file corresponds to one hacker rank problem. You can run each of them using
 
 ## Test
 
-Test cases to each problem should be added to core_test.clj. Run them using lein.
+Test cases to each problem should be added to core_test.clj. Run them using kaocha.
 
-    $ lein test
+    $ lein kaocha
 
 ## License
 
