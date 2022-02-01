@@ -9,4 +9,6 @@
   :dependencies [[org.clojure/clojure "1.10.0"]]
   :main ^:skip-aot clojure-hacker-rank.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}
+             :kaocha {:dependencies [[lambdaisland/kaocha "1.60.977"]]}}
+  :aliases {"kaocha" ["with-profile" "+kaocha" "run" "-m" "kaocha.runner"]})
