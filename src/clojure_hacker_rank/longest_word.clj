@@ -34,9 +34,7 @@
       (str/replace #"[úü]" "u")))
 
 (defn split-words [text]
-  (-> (str/replace text #"[^a-z]+" " ")
-      (str/split #"\s")
-      set))
+  (set (re-seq #"[a-z]+" text)))
 
 (defn with-frequencies [word]
   {:word        word
